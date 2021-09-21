@@ -11,7 +11,7 @@ int dp[N];
 
 int main() {
   scanf("%d", &n);
-  fill(dp, dp+10, 1);
+  fill(dp, dp + 10, 1);
   for (int rem = 10; rem <= n; rem++) {
     cln = rem;
     dp[rem] = OO;

@@ -19,15 +19,15 @@ int solve() {
     dp[availableBooks & 1][0] = 0;
     for (int remainingMoney = 1; remainingMoney <= x; remainingMoney++) {
       dp[availableBooks & 1][remainingMoney] =
-          dp[(availableBooks - 1) & 1][remainingMoney];
+        dp[(availableBooks - 1) & 1][remainingMoney];
       if (remainingMoney >= H[availableBooks]) {
         dp[availableBooks & 1][remainingMoney] =
-            max(dp[availableBooks & 1][remainingMoney],
-                dp[(availableBooks - 1) & 1][remainingMoney - H[availableBooks]] + S[availableBooks]);
+          max(dp[availableBooks & 1][remainingMoney],
+            dp[(availableBooks - 1) & 1][remainingMoney - H[availableBooks]] + S[availableBooks]);
       }
     }
   }
-  return dp[n&1][x];
+  return dp[n & 1][x];
 }
 
 int main() {

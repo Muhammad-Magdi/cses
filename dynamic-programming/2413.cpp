@@ -6,8 +6,6 @@ using namespace std;
 
 const int N = 1e6 + 6, MOD = 1e9 + 7;
 
-#define onBit(msk, b) ((msk) | (1 << (b)))
-
 const int TOP_LEFT_WALL = 0b100;
 const int TOP_RIGHT_WALL = 0b001;
 const int TOP_WALL = TOP_LEFT_WALL | TOP_RIGHT_WALL;
@@ -28,8 +26,10 @@ int t, n;
 int mem[N][8];
 int solve(int i, int last) {
   if (i == 0) return (last & TOP_WALL) == TOP_WALL;
+
   int& ret = mem[i][last];
   if (~ret) return ret;
+
   ret = 0;
   for (int validOption : validOptions[last]) {
     ret = (ret + solve(i - 1, validOption)) % MOD;
@@ -42,7 +42,7 @@ int main() {
   memset(mem, -1, sizeof mem);
   while (t--) {
     scanf("%d", &n);
-    printf("%d\n", solve(n, 0b101));
+    printf("%d\n", solve(n, TOP_WALL));
   }
   return 0;
 }
